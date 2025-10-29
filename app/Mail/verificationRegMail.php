@@ -14,13 +14,14 @@ class verificationRegMail extends Mailable
     use Queueable, SerializesModels;
 
     public $otp;
-
+    public $userId;
     /**
      * Create a new message instance.
      */
-    public function __construct($otp)
+    public function __construct($otp,  $userId)
     {
         $this->otp = $otp;
+        $this->userId = $userId;
     }
 
     /**

@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\auth\emailverificationController;
+use App\Http\Controllers\auth\ForgetPasswordController;
 use App\Http\Controllers\auth\LogOutController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\SignInController;
+use App\Http\Controllers\user\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("auth")->group(function () {
@@ -12,8 +14,16 @@ Route::prefix("auth")->group(function () {
     Route::get('/verify-email/{id}', [emailverificationController::class, 'verifyForm'])->name('verify.email.form');
     Route::post('/verify-email/{id}', [emailverificationController::class, 'verifyOtp'])->name('verify.email.otp');
 
-    Route::get("signin", [SignInController::class, "show_signin_page"])->name("auth.signin.get");
-    Route::post("signin", [SignInController::class, "signin"])->name("auth.signin.post");
+    Route::get("signin", [SignInController::class, "show_signin_page"])->name("signin.get");
+    Route::post("signin", [SignInController::class, "signin"])->name("signin.post");
 
+    Route::get('/forgot-password', [ForgetPasswordController::class, 'index'])->name('password.reset.request');
+    Route::post('/forgot-password', [ForgetPasswordController::class, 'sendResetOTP'])->name('password.reset.otp');
+    Route::get('/forgot-password/verifyOTP/{id}', [ForgetPasswordController::class, 'verifyOTP1'])->name('password.reset.verifyOTP');
+    Route::post('/forgot-password/verifyOTP/{id}', [ForgetPasswordController::class, 'verifyOTP2'])->name('password.reset.verifyOTP');
+    Route::get("changePassword/{id}", [ForgetPasswordController::class, "changePassword"])->name("changePassword.get");
+    Route::post("changePassword/{id}", [ForgetPasswordController::class, "UpdatePassword"])->name("changePassword.post");
     Route::post("logout", [LogOutController::class, "logout"])->name("auth.logout.post");
 });
+
+Route::get('/home', [ProfileController::class, 'index'])->name('user.home');

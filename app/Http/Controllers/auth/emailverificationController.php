@@ -28,14 +28,14 @@ class emailverificationController extends Controller
         }
 
         if ($record->otp === $request->otp && now()->lt($record->expires_at)) {
-            Log::message("User verified: " . $user->email);
-            Log::message("OTP used: " . $request->otp);
-            
+            Log::info("User verified: " . $user->email);
+            Log::info("OTP used: " . $request->otp);
+
             $user->update(['email_verified_at' => now()]);
             $record->delete(); // clean up record
             Auth::login($user);
             return "user verified and logged in[$user->name]";
-          //  return redirect()->route('dashboard')->with('success', 'Email verified successfully!');
+            //  return redirect()->route('dashboard')->with('success', 'Email verified successfully!');
         }
 
         return back()->withErrors(['otp' => 'Invalid or expired OTP.']);

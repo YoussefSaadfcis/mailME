@@ -65,7 +65,7 @@
 
         <div class="text-center text-sm mt-4">
             Already have an account?
-            <a href="/login" class="text-blue-600 hover:underline">Login here</a>
+            <a href={{route("signin.get")}} class="text-blue-600 hover:underline">Login here</a>
         </div>
     </form>
 </div>

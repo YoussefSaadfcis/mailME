@@ -49,9 +49,8 @@ class ForgetPasswordController extends Controller
             Log::info("User reset email: " . $user->email);
             Log::info("OTP used: " . $request->otp);
 
-            // $user->update(['email_verified_at' => now()]);
             $record->delete(); // clean up record
-            // Auth::login($user);
+
             return redirect()->route('changePassword.get',['id'=>$user->id])->with('success', 'Email verified successfully!');
         }
 
@@ -78,8 +77,7 @@ class ForgetPasswordController extends Controller
         } else {
             return back()->withErrors(['email' => 'Email mismatch.']);
         }
-        return "done";
 
-        // return redirect()->route('signin.get')->with('success', 'Password updated successfully. Please sign in with your new password.');
+        return redirect()->route('signin.get')->with('success', 'Password updated successfully. Please sign in with your new password.');
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\auth\emailverificationController;
 use App\Http\Controllers\auth\ForgetPasswordController;
+use App\Http\Controllers\auth\GoogleController;
 use App\Http\Controllers\auth\LogOutController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\SignInController;
@@ -9,6 +10,10 @@ use App\Http\Controllers\user\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix("auth")->group(function () {
+
+    Route::get('google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
+    Route::get('google/callback', [GoogleController::class, 'callback'])->name('google.callback');
+    
     Route::get("signup", [RegisterController::class, "create"])->name("signup.create");
     Route::post("signup", [RegisterController::class, "store"])->name("signup.store");
     Route::get('/verify-email/{id}', [emailverificationController::class, 'verifyForm'])->name('verify.email.form');

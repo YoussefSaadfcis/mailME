@@ -28,7 +28,9 @@ Route::prefix("auth")->group(function () {
     Route::post('/forgot-password/verifyOTP/{id}', [ForgetPasswordController::class, 'verifyOTP2'])->name('password.reset.verifyOTP');
     Route::get("changePassword/{id}", [ForgetPasswordController::class, "changePassword"])->name("changePassword.get");
     Route::post("changePassword/{id}", [ForgetPasswordController::class, "UpdatePassword"])->name("changePassword.post");
-    Route::post("logout", [LogOutController::class, "logout"])->name("auth.logout.post");
+    Route::get("logout", [LogOutController::class, "logout"])->name("logout");
 });
 
 Route::get('/home', [ProfileController::class, 'index'])->name('user.home');
+
+Route::get('/user_character',[ProfileController::class,'index'])->name('user.character');

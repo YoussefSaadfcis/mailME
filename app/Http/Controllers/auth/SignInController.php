@@ -23,7 +23,7 @@ class SignInController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             // Authentication passed...
             $request->session()->regenerate();
-            return redirect()->intended('/home'); 
+            return redirect()->route('user.home'); 
         }
 
         // Authentication failed...

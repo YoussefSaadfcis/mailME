@@ -35,7 +35,6 @@ class GoogleController extends Controller
                     'password' => bcrypt(str()->random(12)), // dummy password
                 ]);
             }
-
             Auth::login($user, true);
             return redirect()->route('user.home')->with('success', 'Logged in with Google!');
             

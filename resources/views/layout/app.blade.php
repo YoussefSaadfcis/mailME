@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'mailME')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
     {{-- 🌐 Header --}}
@@ -19,8 +21,13 @@
                     <li><a href="/" class="hover:text-blue-500">Home</a></li>
                     <li><a href="/about" class="hover:text-blue-500">About</a></li>
                     <li><a href="/profile" class="hover:text-blue-500">Profile</a></li>
-                    <li><a href="/login" class="hover:text-blue-500">Login</a></li>
-                    <li><a href="/logout" class="hover:text-blue-500">Logout</a></li>
+                    @guest
+                        <li><a href="{{ route('signin.get') }}" class="hover:text-blue-500">Login</a></li>
+                    @endguest
+                    @auth
+                        <li><a href="{{ route('logout') }}" class="hover:text-blue-500">Logout</a></li>
+                    @endauth
+                  
                 </ul>
             </nav>
         </div>
@@ -37,4 +44,5 @@
     </footer>
 
 </body>
+
 </html>

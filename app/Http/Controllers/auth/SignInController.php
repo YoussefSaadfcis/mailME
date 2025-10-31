@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\auth;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\signinRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +23,7 @@ class SignInController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             // Authentication passed...
             $request->session()->regenerate();
-            return redirect()->route('user.home'); 
+            return redirect()->route('user.home');
         }
 
         // Authentication failed...

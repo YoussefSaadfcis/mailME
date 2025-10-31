@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Events\UserRegistered;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use App\Http\Requests\signupRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class RegisterController extends Controller
     public function store(signupRequest $request)
     {
         //create user
-       $user = User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'birthdate' => $request->birthdate,
@@ -30,6 +30,5 @@ class RegisterController extends Controller
         // Redirect to a desired location after successful signup
         return redirect()->route('verify.email.form', ['id' => $user->id])
             ->with('success', 'Welcome to mailME!');
-
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\auth;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class GoogleController extends Controller
 {
-    
+
     public function redirect()
     {
         return Socialite::driver('google')->redirect();
@@ -19,7 +19,7 @@ class GoogleController extends Controller
 
     public function callback()
     {
-        try{
+        try {
             $googleUser = Socialite::driver('google')->user();
 
             // Check if user already exists
@@ -37,10 +37,8 @@ class GoogleController extends Controller
             }
             Auth::login($user, true);
             return redirect()->route('user.home')->with('success', 'Logged in with Google!');
-            
-        }catch(\Exception $e){
-            return redirect()->route('signin.get')->with('error','Failed to authenticate with Google.');
+        } catch (\Exception $e) {
+            return redirect()->route('signin.get')->with('error', 'Failed to authenticate with Google.');
         }
-        
     }
 }

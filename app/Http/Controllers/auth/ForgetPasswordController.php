@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Events\UserRegistered;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +51,7 @@ class ForgetPasswordController extends Controller
 
             $record->delete(); // clean up record
 
-            return redirect()->route('changePassword.get',['id'=>$user->id])->with('success', 'Email verified successfully!');
+            return redirect()->route('changePassword.get', ['id' => $user->id])->with('success', 'Email verified successfully!');
         }
 
 
@@ -61,7 +61,7 @@ class ForgetPasswordController extends Controller
     public function changePassword($id)
     {
         $user = User::findOrFail($id);
-        return view('user.auth.change-password', ['email' => $user->email,'id'=>$id]);
+        return view('user.auth.change-password', ['email' => $user->email, 'id' => $id]);
     }
     public function UpdatePassword(Request $request, $id)
     {

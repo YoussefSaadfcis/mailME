@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(EmailVerification::class);
     }
+
+    public function character()
+    {
+        return $this->hasOne(UserCharacter::class);
+    }
 }

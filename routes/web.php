@@ -6,6 +6,7 @@ use App\Http\Controllers\auth\GoogleController;
 use App\Http\Controllers\auth\LogOutController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\auth\SignInController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\user\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::prefix("auth")->group(function () {
     Route::get("logout", [LogOutController::class, "logout"])->name("logout");
 });
 
-Route::get('/home', [ProfileController::class, 'index'])->name('user.home');
+Route::get('/home', [HomeController::class, 'index'])->name('user.home');
 
 Route::get('/user_character',[ProfileController::class,'index'])->name('user.character');
+Route::post('/user_character', [ProfileController::class, 'setUserCharacter'])->name('user.character');

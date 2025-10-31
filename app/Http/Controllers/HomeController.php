@@ -8,5 +8,8 @@ use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 
 class HomeController extends ControllerResolver
 {
-    //
+    public function index()
+    {
+        return view('user.profile.home');
+    }
 }

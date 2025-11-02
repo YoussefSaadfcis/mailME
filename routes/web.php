@@ -21,24 +21,24 @@ Route::prefix("auth")
 
         // --- Registration ---
         Route::get("signup", [RegisterController::class, "create"])->name("signup.create");
-        Route::post("signup", [RegisterController::class, "store"])->name("signup.store")->middleware('throttle:5,1');
+        Route::post("signup", [RegisterController::class, "store"])->name("signup.store")->middleware('throttle:10,1');
 
         // --- Sign In ---
         Route::get("signin", [SignInController::class, "show_signin_page"])->name("signin.get");
-        Route::post("signin", [SignInController::class, "signin"])->name("signin.post")->middleware('throttle:5,1');
+        Route::post("signin", [SignInController::class, "signin"])->name("signin.post")->middleware('throttle:10,1');
 
         // --- Email Verification ---
         Route::get('/verify-email/{id}', [emailverificationController::class, 'verifyForm'])->name('verify.email.form');
-        Route::post('/verify-email/{id}', [emailverificationController::class, 'verifyOtp'])->name('verify.email.otp')->middleware('throttle:5,1');
+        Route::post('/verify-email/{id}', [emailverificationController::class, 'verifyOtp'])->name('verify.email.otp')->middleware('throttle:10,1');
 
         // --- Password Reset ---
         Route::get('/forgot-password', [ForgetPasswordController::class, 'index'])->name('password.reset.request');
         // Stricter limit for sending OTP
-        Route::post('/forgot-password', [ForgetPasswordController::class, 'sendResetOTP'])->name('password.reset.otp')->middleware('throttle:5,1');
+        Route::post('/forgot-password', [ForgetPasswordController::class, 'sendResetOTP'])->name('password.reset.otp')->middleware('throttle:10,1');
 
         // --- OTP Verification & Change Password ---
         Route::get('/forgot-password/verifyOTP/{id}', [ForgetPasswordController::class, 'verifyOTP1'])->name('password.reset.verifyOTP');
-        Route::post('/forgot-password/verifyOTP/{id}', [ForgetPasswordController::class, 'verifyOTP2'])->name('password.reset.verifyOTP')->middleware('throttle:5,1');
+        Route::post('/forgot-password/verifyOTP/{id}', [ForgetPasswordController::class, 'verifyOTP2'])->name('password.reset.verifyOTP')->middleware('throttle:10,1');
 
         Route::get("changePassword/{id}", [ForgetPasswordController::class, "changePassword"])->name("changePassword.get");
         Route::post("changePassword/{id}", [ForgetPasswordController::class, "UpdatePassword"])->name("changePassword.post");

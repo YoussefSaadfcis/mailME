@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\auth\emailverificationController;
 use App\Http\Controllers\auth\ForgetPasswordController;
 use App\Http\Controllers\auth\GoogleController;
@@ -60,3 +61,4 @@ Route::middleware('auth')->group(function () {
 // ----------------------------------------------------------------------
 
 Route::get('/', [HomeController::class, 'index'])->name('user.home');
+Route::get('/about', [AboutController::class, 'index'])->name('user.about');

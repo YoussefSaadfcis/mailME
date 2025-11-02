@@ -34,7 +34,7 @@
 <footer class="border-t mt-16 py-6 text-center text-sm text-gray-500">
     <p>&copy; {{ date('Y') }} mailME. All rights reserved.</p>
     <div class="space-x-4 mt-2">
-        <a href="#" class="hover:text-blue-600">About</a>
+        <a href="{{route('user.about')}}" class="hover:text-blue-600">About</a>
         <a href="#" class="hover:text-blue-600">Contact</a>
         <a href="#" class="hover:text-blue-600">Privacy Policy</a>
     </div>

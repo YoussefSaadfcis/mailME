@@ -25,8 +25,8 @@
             <nav>
                 <ul class="flex gap-6">
                     <li><a href="{{route('user.home')}}" class="hover:text-blue-500">Home</a></li>
-                    <li><a href="/about" class="hover:text-blue-500">About</a></li>
-                    <li><a href="/profile" class="hover:text-blue-500">Profile</a></li>
+                    <li><a href="{{route('user.about')}}" class="hover:text-blue-500">About</a></li>
+                    <li><a href="{{route('user.character')}}" class="hover:text-blue-500">Profile</a></li>
                     @guest
                         <li><a href="{{ route('signin.get') }}" class="hover:text-blue-500">Login</a></li>
                     @endguest

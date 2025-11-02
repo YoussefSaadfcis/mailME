@@ -29,7 +29,7 @@ class SendMotivationEmailJob implements ShouldQueue
         $character = $this->user->character;
         $apiKey = env('GEMINI_API_KEY');
         $prompt = "Write a short, friendly, and motivational message for someone who is {$character->mood}, 
-            motivated by {$character->motivation}, and says: '{$character->about}'. 
+            motivated by {$character->motivation}, and says: '{$character->about}', and his birthdate is {$this->user->birthdate}. 
             Keep it warm and positive.Respond with *only* the final message text itself, without any introductory phrases, labels, or explanations.";
 
         // Example with OpenAI PHP SDK:

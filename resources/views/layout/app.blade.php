@@ -16,6 +16,12 @@
             <h1 class="text-2xl font-bold text-blue-600">
                 <a href="{{route("user.home")}}">mailME</a>
             </h1>
+            @auth
+                <div class="ml-auto mr-6 text-md font-semibold text-gray-600">
+                    Welcome,{{ Auth::user()->name }}!
+                </div>
+            @endauth
+              
             <nav>
                 <ul class="flex gap-6">
                     <li><a href="{{route('user.home')}}" class="hover:text-blue-500">Home</a></li>

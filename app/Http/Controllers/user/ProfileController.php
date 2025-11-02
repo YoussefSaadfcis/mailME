@@ -19,8 +19,7 @@ class ProfileController extends Controller
         $user = Auth::user();
         $data = $request->validated();
         UserCharacter::updateOrCreate(['user_id' => $user->id], $data);
-        return $user->character;
-        // return redirect()->route('user.character')->with('success', 'Character updated successfully.');
+        return redirect()->route('user.home')->with('success', 'Character updated successfully.');
     }
 }
 

@@ -14,11 +14,11 @@
     <header class="bg-white shadow">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-blue-600">
-                <a href="/">mailME</a>
+                <a href="{{route("user.home")}}">mailME</a>
             </h1>
             <nav>
                 <ul class="flex gap-6">
-                    <li><a href="/" class="hover:text-blue-500">Home</a></li>
+                    <li><a href="{{route('user.home')}}" class="hover:text-blue-500">Home</a></li>
                     <li><a href="/about" class="hover:text-blue-500">About</a></li>
                     <li><a href="/profile" class="hover:text-blue-500">Profile</a></li>
                     @guest

@@ -13,7 +13,7 @@ class SendDailyMotivation extends Command
 
     public function handle()
     {
-        $users = User::whereNotNull('email_verified_at')->get();
+        $users = User::whereNotNull('email_verified_at')->has('character')->get();
 
         foreach ($users as $user) {
             if ($user->character) {
